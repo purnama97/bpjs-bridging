@@ -12,7 +12,7 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "purnama97\\Bpjs\\": "src/"
+            "Purnama97\\Bpjs\\": "src/"
         }
     },
     "require": {

@@ -1,5 +1,5 @@
 <?php
-namespace Nsulistiyawan\Bpjs;
+namespace Purnama97\Bpjs;
 use LZCompressor;
 
 use GuzzleHttp\Client;
