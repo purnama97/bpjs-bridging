@@ -1,7 +1,7 @@
 <?php
-namespace Nsulistiyawan\Bpjs\Aplicare;
+namespace Purnama97\Bpjs\Aplicare;
 
-use Nsulistiyawan\Bpjs\BpjsService;
+use Purnama97\Bpjs\BpjsService;
 
 class KetersediaanKamar extends BpjsService
 {

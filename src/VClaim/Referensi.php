@@ -1,7 +1,7 @@
 <?php
-namespace Nsulistiyawan\Bpjs\VClaim;
+namespace Purnama97\Bpjs\VClaim;
 
-use Nsulistiyawan\Bpjs\BpjsService;
+use Purnama97\Bpjs\BpjsService;
 
 class Referensi extends BpjsService
 {
