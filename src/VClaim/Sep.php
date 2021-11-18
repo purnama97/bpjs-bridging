@@ -7,17 +7,17 @@ class Sep extends BpjsService
 
     public function insertSEP($data = [])
     {
-        $response = $this->post('SEP/1.1/insert', $data);
+        $response = $this->post('SEP/2.0/insert', $data);
         return json_decode($response, true);
     }
     public function updateSEP($data = [])
     {
-        $response = $this->put('SEP/1.1/Update', $data);
+        $response = $this->put('SEP/2.0/Update', $data);
         return json_decode($response, true);
     }
     public function deleteSEP($data = [])
     {
-        $response = $this->delete('SEP/Delete', $data);
+        $response = $this->delete('SEP/2.0/Delete', $data);
         return json_decode($response, true);
     }
 
