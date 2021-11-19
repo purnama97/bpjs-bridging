@@ -157,6 +157,7 @@ class BpjsService{
                     'json' => $data,
                 ]
             )->getBody()->getContents();
+            $key = $this->headers['X-cons-id'] . $this->secret_key . $this->headers['X-Timestamp'];
             $response = $this->stringDecrypt($key, json_decode($data));
         } catch (\Exception $e) {
             $response = $e->getResponse()->getBody();
@@ -176,6 +177,7 @@ class BpjsService{
                     'json' => $data,
                 ]
             )->getBody()->getContents();
+            $key = $this->headers['X-cons-id'] . $this->secret_key . $this->headers['X-Timestamp'];
             $response = $this->stringDecrypt($key, json_decode($data));
         } catch (\Exception $e) {
             $response = $e->getResponse()->getBody();
@@ -196,6 +198,7 @@ class BpjsService{
                     'json' => $data,
                 ]
             )->getBody()->getContents();
+            $key = $this->headers['X-cons-id'] . $this->secret_key . $this->headers['X-Timestamp'];
             $response = $this->stringDecrypt($key, json_decode($data));
         } catch (\Exception $e) {
             $response = $e->getResponse()->getBody();
