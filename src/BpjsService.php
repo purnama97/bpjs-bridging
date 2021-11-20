@@ -119,7 +119,12 @@ class BpjsService{
     
         $output = openssl_decrypt(base64_decode($data), $encrypt_method, $key_hash, OPENSSL_RAW_DATA, $iv);
     
-        return $this->decompress($output);
+        $response = array(
+            "metaData" => $string->metaData,
+            "response" => json_decode($this->decompress($output))
+        );
+
+         return json_encode($response);
     }
 
     protected function get($feature)
