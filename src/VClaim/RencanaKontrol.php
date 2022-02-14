@@ -30,17 +30,22 @@ class RencanaKontrol extends BpjsService
     // SPRI
     public function insertSPRI($data = [])
     {
-        $response = $this->post('PRB/insert', $data);
+        $response = $this->post('RencanaKontrol/insertSPRI', $data);
         return json_decode($response, true);
     }
     public function updateSPRI($data = [])
     {
-        $response = $this->put('PRB/Update', $data);
+        $response = $this->put('RencanaKontrol/UpdateSPRI', $data);
         return json_decode($response, true);
     }
-    public function deleteSPRI($data = [])
+    public function cariSEP($noSEP)
     {
-        $response = $this->delete('PRB/Delete', $data);
+        $response = $this->get('RencanaKontrol/nosep/'.$noSEP);
+        return json_decode($response, true);
+    }
+    public function poliSpesialistik($jnsKontrol, $nomor, $tglKontrol)
+    {
+        $response = $this->get('RencanaKontrol/ListSpesialistik/JnsKontrol/'.$jnsKontrol.'/nomor/'.$nomor.'/TglRencanaKontrol/'.$tglKontrol);
         return json_decode($response, true);
     }
     public function dokterKontrol($jnsKontrol, $kdPoli, $tglRencanaKontrol)
@@ -49,9 +54,16 @@ class RencanaKontrol extends BpjsService
         return json_decode($response, true);
     }
 
-    public function cariTanggalSRB($tglMulai, $tglAkhir)
+    public function cariNoSuratKontrol($noSurat)
     {
-        $response = $this->get('PRB'.'/'.'tglMulai'.'/'.$tglMulai.'/'.'tglAkhir'.'/'.$tglAkhir);
+        $response = $this->get('RencanaKontrol/noSuratKontrol/'.$noSurat);
         return json_decode($response, true);
     }
+
+    public function dataNoSuratKontrol($tglAwal, $tglAkhir, $filter)
+    {
+        $response = $this->get('RencanaKontrol/ListRencanaKontrol/tglAwal/'.$tglAwal.'/tglAkhir/'.$tglAkhir.'/filter/'.$filter);
+        return json_decode($response, true);
+    }
+
 }

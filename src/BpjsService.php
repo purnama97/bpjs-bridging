@@ -127,6 +127,24 @@ class BpjsService{
          return json_encode($response);
     }
 
+    protected function getNoDektrip($feature)
+    {
+        $this->headers['Content-Type'] = 'application/json; charset=utf-8';
+        try {
+            $response = $this->clients->request(
+                'GET',
+                $this->base_url . '/' . $this->service_name . '/' . $feature,
+                [
+                    'headers' => $this->headers
+                ]
+            )->getBody()->getContents();
+        } catch (\Exception $e) {
+            $response = $e->getResponse()->getBody();
+        }
+       
+        return $response;
+    }
+
     protected function get($feature)
     {
         $this->headers['Content-Type'] = 'application/json; charset=utf-8';
@@ -138,6 +156,7 @@ class BpjsService{
                     'headers' => $this->headers
                 ]
             )->getBody()->getContents();
+            // var_dump($data);
             $key = $this->headers['X-cons-id'] . $this->secret_key . $this->headers['X-Timestamp'];
             $response = $this->stringDecrypt($key, json_decode($data));
         } catch (\Exception $e) {
@@ -182,6 +201,7 @@ class BpjsService{
                     'json' => $data,
                 ]
             )->getBody()->getContents();
+
             $key = $this->headers['X-cons-id'] . $this->secret_key . $this->headers['X-Timestamp'];
             $response = $this->stringDecrypt($key, json_decode($data));
         } catch (\Exception $e) {
@@ -195,7 +215,7 @@ class BpjsService{
     {
         $this->headers['Content-Type'] = 'application/x-www-form-urlencoded';
         try {
-            $data = $this->clients->request(
+            $response = $this->clients->request(
                 'DELETE',
                 $this->base_url . '/' . $this->service_name . '/' . $feature,
                 [
@@ -203,8 +223,6 @@ class BpjsService{
                     'json' => $data,
                 ]
             )->getBody()->getContents();
-            $key = $this->headers['X-cons-id'] . $this->secret_key . $this->headers['X-Timestamp'];
-            $response = $this->stringDecrypt($key, json_decode($data));
         } catch (\Exception $e) {
             $response = $e->getResponse()->getBody();
         }
